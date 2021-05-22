@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="JavaScr/validacion.js"></script>
+        <link rel="stylesheet" href="css/Crear.css">
+        <style type="text/css">
+            .error {
+            color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <img class="avatar" src="./Image/inicio.jpeg" id="Logo" alt="Logo de Faz">
+        <form id="formulario01" method="POST" action="../controladores/crear_usuario.php" onsubmit="return validarCamposObligatorios()">
+            <br>
+            <h3>INGRESE SU INFORMACION</h3>
+            <label id="label" for="cedula">Cedula :</label>
+            <input type="text" style="width: 302px;" id="cedula" name="cedula" value="" placeholder="Ingrese el número de cedula ..." onblur="return validarCedula(this)" onkeypress="return validarNumeros( this)" onblur = "return validarCamposObligatorios()"/>
+            <br>
+            <span id="mensajeCedula" class="error"></span>
+            <br>
+            <label for="nombres">Nombres :</label>
+            <input type="text" style="width: 290px;" id="nombres" name="nombres" value="" placeholder="Ingrese sus dos nombres ..." onkeypress="return validarLetras(this)" onblur="return validarNombres(this, 'mensajeNombres')"/>
+            <br>
+            <span id="mensajeNombres" class="error"></span>
+
+            <br>
+            <label for="apellidos">Apelidos :</label>
+            <input type="text" style="width: 290px;" id="apellidos" name="apellidos" value="" placeholder="Ingrese sus dos apellidos ..." onkeypress="return validarLetras(this)" onblur="return validarApellidos(this, 'mensajeApellidos')" />
+            <br>
+            <span id="mensajeApellidos" class="error"></span>
+
+            <br>
+            <br>
+            <label for="direccion">Direccion :</label>
+            <input type="text"  style="width: 285px;" id="direccion" name="direccion" value="" placeholder="Ingrese su Direccion ..." onkeypress="return validarLetras(this)"  />
+            <br>
+            <span id="mensajeApellidos" class="error"></span>
+
+            <br>
+
+            <label for="telefono">Teléfono :</label>
+            <input type="text" style="width: 291px;" id="telefono" name="telefono" value="" placeholder="Ingrese su número telefónico..." onkeyup="return validarNumeros( this)"/>
+            
+            <br>
+            <span id="mensajeTelefono" class="error"></span>
+
+            <br>
+            <label for="fecha">Fecha Nacimiento :</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="" placeholder="Ingrese su fecha de nacimiento ..." />
+            <br>
+            <span id="mensajeFechaNacimiento" class="error"></span>
+
+            <br>
+            <label for="correo">E-mail :</label>
+            <input type="email" style="width: 305px;" id="correo" name="correo" value="" placeholder="Ingrese su correo electrónico ..." onkeypress="ValidarCorreo('mensajeCorreo',this)" />
+            <br>
+            <span id="mensajeCorreo" class="error"></span>
+            <br>
+
+            <label for="contrasena">Contraseña :</label>
+            <input type="password" style="width: 180px;" id="contrasena" name="contrasena" value="" placeholder="Ingrese su contraseña ..." onkeypress="validarCampoContrasena('mensajeContrasena',this)" />
+            <br>
+            <span id="mensajeContrasena" class="error"></span>
+
+            <br>
+            <input type="submit" id="crear" name="crear" value="Aceptar" />
+            <input type="reset" id="cancelar" name="cancelar" value="Cancelar" />
+            <br>
+            <a id="Log" href="./login.html">LOGIN</a>
+
+        
+        </form>
+    </body>
+
+</html>

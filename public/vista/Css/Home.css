@@ -1,0 +1,99 @@
+
+body {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+
+
+/*Encabezado */
+
+header {
+	font-size: 25px;
+	text-align: center;
+    color: rgb(255, 255, 255);
+	width: 100%;
+	background:url("../Image/Encabezado2.jpeg");
+    background-size: 25%,500%;
+    margin: 0 auto;
+	padding-top: 10px;
+    border-bottom: 2px solid #2C9AB7;
+}
+
+
+/*Menu*/ 
+#menu1 {
+	float: left;
+    font-style: italic;
+    color: rgb(255, 255, 255);
+	width:100%;
+	background: #000000;
+
+	clear: left;
+
+
+
+}
+a{
+	font-size: 20px;
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+	display: inline-block;
+	background: #000000;
+	margin-left: 100px;
+    
+   
+}
+a:hover{
+	text-decoration: underline;
+	background: rgb(255, 255, 255);
+	color: #000000;
+    padding: 0px 5px;
+}
+/* CUERPO*/
+
+/* Contenedor 1 */
+#cont{
+
+	min-width: 100%;
+	min-height: 500px;
+	float: left;
+	background: #ffffff;
+	margin: 0 auto;
+}
+#links{
+	margin: 0;
+	font-size: 17px;
+	background: none;
+	color: #000000;
+}
+#table{
+	 margin-left: 50px;
+	 margin-top: 25px;
+	 margin-right: 50px; 
+	 max-width: 1450px;
+	 border: 1px solid black;
+}
+th{
+    border: 1px solid black;
+}
+td{
+    border: 1px solid black;
+}
+#Buscador{
+	margin-left: 50px;
+	margin-right: 10px;
+}
+
+/* Pie de pagina*/
+footer{
+    width: 100%;
+	background: black;
+	border-radius: 0 0 20px 20px;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	box-sizing: border-box;
+	padding: 50px;
+	font-size: 18px;
+}

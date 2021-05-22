@@ -1,0 +1,87 @@
+
+body {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+    background: url(../Image/fondo5.jpg);
+    background-size: 100% 875px;
+}
+a{
+    margin-left: 700px;
+	font-size: 20px;
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+	display: inline-block;
+	background:none;
+	margin: 5px 0px px 0px;
+
+}
+a:hover{
+	text-decoration: underline;
+	color: #0246ff;
+    padding: 0px 5px;
+
+}
+#Logo{
+	margin-top: 65px;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: absolute;
+	top: -50px;
+	left: calc(50% - 60px);
+}
+H3{
+    margin-left: 150px;
+    margin-top: 45px;
+}
+
+form{
+    margin-left: 500px;
+    margin-top: 70px;
+    max-width: 500px;
+    min-height: 665px;
+    font-size: 17px;
+    color: white;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background: #000000; 
+    text-align: left;
+}
+#Log{
+    margin-top: 20px;
+    text-align: center;
+    margin-left: 222px;
+}
+
+label{
+
+    margin: 10px;
+    margin-top: 10px;
+    margin-left: 50px;
+
+}
+input{
+    margin-top:15px ;
+}
+#crear{
+    margin-top: 20px;
+    margin-left: 150px;
+    width: 100px;
+    height: 26px;
+    aspect-ratio: 20px;
+}
+#cancelar{
+    
+    width: 100px;
+    height: 26px;
+}
+.error{
+    color: red;
+    font-size: 15px;
+}
+span{
+    margin-left: 100px;
+}
+
