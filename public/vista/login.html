@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Iniciar sesión</title>
+		<link rel="stylesheet" href="../../Css/Inicio.css">
+	</head>
+	
+	<body> 
+
+		<div class="login">
+		
+			<img class="avatar" src="./Image/inicio.jpeg" alt="Logo de Faz">
+			<h1>Inicie Sesion</h1>
+			<form id="formulario01" method="POST" action="../controladores/login.php">
+				
+				<label for="Usuario">User Name</label>
+				<input type="text" id="correo" name="correo" placeholder="Ingrese Correo">
+					
+				<label for ="password">Password </label>
+				<input type="password" id="password" name="password" value="" placeholder="Ingrese password">
+							
+				<p> <input type ="submit" id="login" name="login" value="Iniciar sesión"></p>
+					
+				<a href="./crear_usuario.html">No tengo una cuenta?</a>
+				<a href="#">Olvide mi password?</a>
+			</form>
+		
+		</div>
+	</body>
+</html>
