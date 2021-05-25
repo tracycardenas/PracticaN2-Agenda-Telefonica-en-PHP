@@ -78,6 +78,48 @@
                     <label for="correo">E-mail:</label>
                     <input type="email"  style="width: 305px;" id="correo" name="correo" value="<?php echo $row["usu_correo"]; ?>" required placeholder="Ingrese el correo electrónico ..."/>
                     <br><br><br>
+
+                    <h3>TELEFONOS</h3>
+        <table id="table" style="width:100%">
+            <tr>
+
+                <th>Numero</th>
+                <th>Tipo</th>
+                <th>Operadora</th>
+                <th >Administrar</th>
+
+
+            </tr>
+        <?php
+            include '../../../config/conexionBD.php';
+            $sql = "SELECT * FROM telefono WHERE usuario_usu_codigo =$codigo";
+            $result = $conn->query($sql);
+           
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+
+                    echo " <td>" . $row['tel_numero'] . "</td>";
+                    echo " <td>" . $row['tel_operadora'] . "</td>";
+                    echo " <td>" . $row['tel_tipo'] . "</td>";
+
+                    echo " <td> <a id= 'links' href='../../controladores/usuario/eliminar.php?codigo=" . $row['tel_id'] . "'>Eliminar</a> </td>";
+                    echo "</tr>";
+                }
+            } 
+            else {
+                echo "<tr>";
+                echo " <td colspan='7'>El usuario no tiene telefonos registrados </td>";
+                echo "</tr>";
+            }
+
+            $conn->close();
+
+            ?>
+        </table>
+
+
+
                     <input type="submit" id="modificar" name="modificar" value="Guardar" />
                     <input type="reset"  id="cancelar" name="cancelar" value="Cancelar" />
                 </form>
@@ -88,7 +130,6 @@
             echo "<p>Ha ocurrido un error inesperado !</p>";
             echo "<p>" . mysqli_error($conn) . "</p>";
         }
-    $conn->close();
     ?>
 
     </Section>

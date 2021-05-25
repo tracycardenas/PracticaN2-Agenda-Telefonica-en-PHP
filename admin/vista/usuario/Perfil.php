@@ -91,7 +91,7 @@
          
         
 
-         //echo "<a id= 'mod' href='./Mod.php?codigo=$cod'>Modificar</a>";
+         echo "<a id= 'mod' href='./Mod.php?codigo=$cod'>Modificar</a>";
         ?>
         <h3>TELEFONOS</h3>
         <table id="table" style="width:100%">
