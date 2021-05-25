@@ -6,6 +6,10 @@
         <TITLE>Agenda </TITLE>
         
         <link href="../../Css/Home.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="../../JavaScr/buscar.js"></script>
+
+        <script type="text/javascript" src="../../JavaScr/validacion.js"></script>
+
     </HEAD>
 <body>
     
@@ -28,9 +32,17 @@
 
     <nav id="menu1">
 
+
         <ul><li type="none">
-        <input type="text" style="width: 320px;" id="Buscador" name="Buscador" value="" placeholder="Ingrese el número de Telefono o Correo"/>
-        <input type ="submit" id="buscar" name="buscar" value="BUSCAR">
+
+        <form onsubmit="return buscarPorCedula()">
+            <input type="text" style="width: 320px;" id="cedula" name="cedula" value="" placeholder="Ingrese el número de Telefono o Correo" onblur="return validarCedula(this)"/>
+            <input type="button" id="buscar" name="buscar" value="Buscarr" onclick="buscarPorCedula()">
+
+        </form>
+        
+
+       
         <a id="Inicio" href="./login.html"> Iniciar Sesion</a>
         <a href="./crear_usuario.html"> Registrarse</a>
 
@@ -39,6 +51,9 @@
         </li>     
     </ul>           
     </nav>
+    <br>
+    <div id="informacion"><b>Datos de la persona</b></div>
+    <br>
     
     
 
