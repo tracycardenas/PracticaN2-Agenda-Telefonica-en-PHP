@@ -33,7 +33,6 @@
 
         ?>
         
-        <a href="./PugMobile.html">About</a>
         </li>     
     </ul>           
     </nav>
@@ -42,7 +41,7 @@
     <?php
         session_start();
         if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
-        header("Location: /SistemaDeGestion/public/vista/login.html");
+        header("Location: ../../../public/vista/login.html");
         }
     ?>
 
@@ -97,11 +96,14 @@
            
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    echo "<tr>";
+                    ?>
+                    <tr>
+            
+                    <td>  <input type="text" style="width: 285px;" id="direccion" name="direccion" value="<?php echo $row['tel_numero'] ; ?>" required placeholder="Ingrese la dirección ..."/> </td>
+                    <td>  <input type="text" style="width: 285px;" id="direccion" name="direccion" value="<?php echo $row['tel_operadora'] ; ?>" required placeholder="Ingrese la dirección ..."/> </td>
+                    <td>  <input type="text" style="width: 285px;" id="direccion" name="direccion" value="<?php echo $row['tel_tipo'] ; ?>" required placeholder="Ingrese la dirección ..."/> </td>
 
-                    echo " <td>" . $row['tel_numero'] . "</td>";
-                    echo " <td>" . $row['tel_operadora'] . "</td>";
-                    echo " <td>" . $row['tel_tipo'] . "</td>";
+                <?php    
 
                     echo " <td> <a id= 'links' href='../../controladores/usuario/eliminar.php?codigo=" . $row['tel_id'] . "'>Eliminar</a> </td>";
                     echo "</tr>";
@@ -112,16 +114,23 @@
                 echo " <td colspan='7'>El usuario no tiene telefonos registrados </td>";
                 echo "</tr>";
             }
+            
 
-            $conn->close();
+           
 
             ?>
         </table>
-
-
-
-                    <input type="submit" id="modificar" name="modificar" value="Guardar" />
-                    <input type="reset"  id="cancelar" name="cancelar" value="Cancelar" />
+                <input type="submit" id="modificar" name="modificar" value="Guardar" />
+                    <?php
+                   $codigo = $_GET["codigo"];
+                   $sql = "SELECT * FROM usuario where usu_codigo=$codigo";
+                    include '../../../config/conexionBD.php';
+                    $result = $conn->query($sql); 
+                    $row = $result->fetch_assoc();
+                    $cedula =$row["usu_cedula"];
+                    echo "<a id= 'mod' href='./Perfil.php?cedula=$cedula'>Cancelar</a>";
+                    $conn->close();
+                    ?>
                 </form>
                 <?php
             }

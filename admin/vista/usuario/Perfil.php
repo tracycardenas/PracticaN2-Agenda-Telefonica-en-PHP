@@ -22,8 +22,7 @@
         <a id="Inicio" href="../../../public/vista/login.html"> Iniciar Sesion</a>
         <a href="../../../public/vista/crear_usuario.html"> Registrarse</a>
         <a href="./Perfil.php">Mi perfil</a>
-        <a href="../../../public/vista/crear_usuario.html">About</a>
-        <a href="./PugMobile.html">Cerrar Sesion</a>
+        <a href="../../../config/cerrar_sesion.php">Cerrar Sesion</a>
         </li>     
     </ul>           
     </nav>
@@ -86,12 +85,6 @@
          $result = $conn->query($sql); 
          $row = $result->fetch_assoc();
          $cod =$row["usu_codigo"];
-
-         
-         
-        
-
-         echo "<a id= 'mod' href='./Mod.php?codigo=$cod'>Modificar</a>";
         ?>
         <h3>TELEFONOS</h3>
         <table id="table" style="width:100%">
@@ -127,10 +120,22 @@
                 echo "</tr>";
             }
 
+        
             $conn->close();
 
             ?>
+
         </table>
+
+        <?php
+         $cedula=$_GET["cedula"];
+         include '../../../config/conexionBD.php';
+         $sql = "SELECT * FROM usuario WHERE usu_cedula=$cedula";
+         $result = $conn->query($sql); 
+         $row = $result->fetch_assoc();
+         $cod =$row["usu_codigo"];
+         echo "<a id= 'mod' href='./Mod.php?codigo=$cod'>Modificar</a>";
+        ?>
     </Section>
     <footer>
         -----------------------------------------------------------------------<br>

@@ -5,6 +5,6 @@
 
  session_destroy();
 
- header("Location: /SistemaDeGestion/public/vista/login.html");
+ header("Location: ../public/vista/login.html");
  
 ?>
