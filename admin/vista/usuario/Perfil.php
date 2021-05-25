@@ -86,36 +86,38 @@
          $result = $conn->query($sql); 
          $row = $result->fetch_assoc();
          $cod =$row["usu_codigo"];
+
+         
+         
         
 
-         echo "<a id= 'mod' href='./Mod.php?codigo=$cod'>Modificar</a>";
+         //echo "<a id= 'mod' href='./Mod.php?codigo=$cod'>Modificar</a>";
         ?>
         <h3>TELEFONOS</h3>
         <table id="table" style="width:100%">
             <tr>
 
                 <th>Numero</th>
-                <th>Tipo</th>
                 <th>Operadora</th>
-                <th colspan="3">Administrar</th>
+                <th>Tipo</th>
 
 
             </tr>
+
+        
         <?php
             include '../../../config/conexionBD.php';
-            $sql = "SELECT * FROM usuario";
-            $result = $conn->query($sql);
+            $sql2 = "SELECT * FROM telefono WHERE usuario_usu_codigo = $cod";
+            $result2 = $conn->query($sql2);
            
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
+            if ($result2->num_rows > 0) {
+                while($row = $result2->fetch_assoc()) {
                     echo "<tr>";
 
-                    echo " <td>" . $row['usu_telefono'] . "</td>";
-                    echo " <td>" . $row['usu_telefono'] . "</td>";
-                    echo " <td>" . $row['usu_telefono'] . "</td>";
+                    echo " <td>" . $row['tel_numero'] . "</td>";
+                    echo " <td>" . $row['tel_operadora'] . "</td>";
+                    echo " <td>" . $row['tel_tipo'] . "</td>";
 
-                    echo " <td> <a id= 'links' href='../../admin/controladores/usuario/eliminar.php?codigo=" . $row['usu_codigo'] . "'>Eliminar</a> </td>";
-                    echo " <td> <a id= 'links' href='../../admin/controladores/usuario/modificar.php?codigo=" . $row['usu_codigo'] . "'>Modificar</a> </td>";
                     echo "</tr>";
                 }
             } 

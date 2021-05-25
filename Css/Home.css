@@ -53,6 +53,13 @@ a:hover{
 }
 /* CUERPO*/
 
+#datosbuscar {
+	min-height: 100px;
+	min-width: 100%;
+	background: #2C9AB7;
+
+}
+
 /* Contenedor 1 */
 #cont{
 

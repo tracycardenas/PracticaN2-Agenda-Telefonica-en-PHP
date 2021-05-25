@@ -3,7 +3,7 @@
 include '../../config/conexionBD.php';
 
 
- $cedula = $_GET['cedula'];
+ $cedula = $_GET['buscador'];
  //echo "Hola " . $cedula;
 
  echo $cedula;
@@ -12,7 +12,7 @@ include '../../config/conexionBD.php';
  GROUP_CONCAT(DISTINCT t.tel_numero, ' / ',' Operadora: ', T.tel_operadora, ' /  Tipo: ', T.tel_tipo, '<br>', '<br>') as telefonos
 FROM usuario u , telefono t 
 WHERE u.usu_codigo = t.usuario_usu_codigo and usu_eliminado = 'N' and usu_cedula='$cedula'
-GROUP by 1";
+GROUP by 1;";
 echo $sql;
  
 

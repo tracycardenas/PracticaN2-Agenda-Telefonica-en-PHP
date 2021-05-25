@@ -16,7 +16,7 @@ function buscarPorCedula() {
     document.getElementById("informacion").innerHTML = this.responseText;
     }
     };
-    xmlhttp.open("GET","../public/controladores/buscar.php?cedula="+cedula,true);
+    xmlhttp.open("GET","../vista/buscar.php?cedula="+cedula,true);
     xmlhttp.send();
     }
     return false;

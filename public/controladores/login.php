@@ -17,7 +17,7 @@
         
 
     } else {
-        //header("Location: ../vista/crear_usuario.html");
+        header("Location: ../vista/crear_usuario.html");
         //echo '<input name="txt1" type="text" value="' echo $cedula '" />';
 
        

@@ -6,9 +6,9 @@
         <TITLE>Agenda </TITLE>
         
         <link href="../../Css/Home.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="../../JavaScr/validacion.js"></script>
         <script type="text/javascript" src="../../JavaScr/buscar.js"></script>
 
-        <script type="text/javascript" src="../../JavaScr/validacion.js"></script>
 
     </HEAD>
 <body>
@@ -35,26 +35,44 @@
 
         <ul><li type="none">
 
-        <form onsubmit="return buscarPorCedula()">
-            <input type="text" style="width: 320px;" id="cedula" name="cedula" value="" placeholder="Ingrese el número de Telefono o Correo" onblur="return validarCedula(this)"/>
-            <input type="button" id="buscar" name="buscar" value="Buscarr" onclick="buscarPorCedula()">
-
-        </form>
-        
+       
 
        
         <a id="Inicio" href="./login.html"> Iniciar Sesion</a>
         <a href="./crear_usuario.html"> Registrarse</a>
 
-        <a href="../../admin/vista/usuario/Perfil.php">Mi perfil</a>
+        <?php 
+    
+            $cedula=$_GET['cedula'];
+            include '../../config/conexionBD.php';
+            $sql = "SELECT usu_nombres FROM usuario WHERE usu_cedula=$cedula";
+            $result = $conn->query($sql);
+            $row = $result->fetch_assoc();
+            $nombres =$row["usu_nombres"];
+            echo "<a href='../../admin/vista/usuario/Perfil.php?cedula=$cedula'> Mi Perfil</a>"
+        ?>
+
         <a href="./PugMobile.html">About</a>
         </li>     
     </ul>           
     </nav>
-    <br>
-    <div id="informacion"><b>Datos de la persona</b></div>
-    <br>
     
+
+
+    <Section id="datosbuscar">
+    <form onsubmit="return buscarPorCedula()" >
+        <input type="text" id="cedula" name="cedula" value="">
+        <input type="button" id="buscar" name="buscar" value="Buscar" onclick="buscarPorCedula()">
+    </form>
+
+        <br>
+            <div id="informacion"><b>Datos de la persona</b></div>
+        <br>
+        
+
+    </Section>
+
+  
     
 
     <Section id="cont">
