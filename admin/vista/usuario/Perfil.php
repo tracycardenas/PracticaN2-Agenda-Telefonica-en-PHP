@@ -29,72 +29,90 @@
     </nav>
 
     <Section id="cont">
+        <?php 
+            
+            $cedula=$_GET['cedula'];
+            include '../../../config/conexionBD.php';
+            $sql = "SELECT * FROM usuario WHERE usu_cedula=$cedula";
+            $result = $conn->query($sql);
+            $row = $result->fetch_assoc();
+        ?>
         
         <article id="Art1">
   
                 <Br>
                 <label id="label" for="cedula">Cedula :</label>
-                <input type="text" style="width: 302px;" id="cedula" name="cedula" value="" placeholder="" onblur="return validarCedula(this)" disabled/>
+                <input type="text" style="width: 302px;" id="cedula" name="cedula" value="<?php echo $row["usu_cedula"]; ?>" placeholder="" disabled/>
                 <br>
                 <span id="mensajeCedula" class="error"></span>
                 <br>
                 <br>
                 <label for="nombres">Nombres :</label>
-                <input type="text" style="width: 290px;" id="nombres" name="nombres" value="" placeholder="" onkeypress="return validarLetras(this)" onblur="return validarNombres(this, 'mensajeNombres')" disabled/>
+                <input type="text" style="width: 290px;" id="nombres" name="nombres" value="<?php echo $row["usu_nombres"]; ?>" placeholder=""disabled/>
                 <span id="mensajeNombres" class="error"></span>
 
             
-                <label for="apellidos">Apelidos :</label>
-                <input type="text" style="width: 290px;" id="apellidos" name="apellidos" value="" placeholder="" onkeypress="return validarLetras(this)" onblur="return validarApellidos(this, 'mensajeApellidos')" disabled/>
+                <label for="apellidos">Apellidos :</label>
+                <input type="text" style="width: 290px;" id="apellidos" name="apellidos" value="<?php echo $row["usu_apellidos"]; ?>" placeholder="" disabled/>
                 
                 <span id="mensajeApellidos" class="error"></span>
 
 
                 <label for="direccion">Direccion :</label>
-                <input type="text"  style="width: 285px;" id="direccion" name="direccion" value="" placeholder="" onkeypress="return validarLetras(this)" disabled />
+                <input type="text"  style="width: 285px;" id="direccion" name="direccion" value="<?php echo $row["usu_direccion"]; ?>" placeholder=""  disabled />
                 <br>
                 <span id="mensajeApellidos" class="error"></span>
 
                 <br>
                 <br>
-
-                <label for="telefono">Teléfono :</label>
-                <input type="text" style="width: 291px;" id="telefono" name="telefono" value="" placeholder="" onkeyup="return validarNumeros( this)" disabled/>
-                
                 <span id="mensajeTelefono" class="error"></span>
 
                 <label for="fecha">Fecha Nacimiento :</label>
-                <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="" placeholder="" disabled />
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $row["usu_fecha_nacimiento"]; ?>" placeholder="" disabled />
     
                 <span id="mensajeFechaNacimiento" class="error"></span>
 
-                <label for="correo">E-mail :</label>
-                <input type="email" style="width: 305px;" id="correo" name="correo" value="" placeholder="" onkeypress="ValidarCorreo('mensajeCorreo',this)" disabled/>
+                <label id="coname"for="correo">E-mail :</label>
+                <input type="email" style="width: 305px;" id="correo" name="correo" value="<?php echo $row["usu_correo"]; ?>" placeholder="" disabled/>
                 
                 
 
         </article>
 
-    
+        <?php
+         $cedula=$_GET["cedula"];
+         include '../../../config/conexionBD.php';
+         $sql = "SELECT * FROM usuario WHERE usu_cedula=$cedula";
+         $result = $conn->query($sql); 
+         $row = $result->fetch_assoc();
+         $cod =$row["usu_codigo"];
         
+
+         echo "<a id= 'mod' href='./Mod.php?codigo=$cod'>Modificar</a>";
+        ?>
+        <h3>TELEFONOS</h3>
         <table id="table" style="width:100%">
             <tr>
 
-                <th>Telefono</th>
+                <th>Numero</th>
+                <th>Tipo</th>
+                <th>Operadora</th>
                 <th colspan="3">Administrar</th>
 
 
             </tr>
         <?php
             include '../../../config/conexionBD.php';
-            $sql = "SELECT * FROM usuario, telefono";
+            $sql = "SELECT * FROM usuario";
             $result = $conn->query($sql);
            
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo "<tr>";
 
-                    echo " <td>" . $row['tel_operadora'] . "</td>";
+                    echo " <td>" . $row['usu_telefono'] . "</td>";
+                    echo " <td>" . $row['usu_telefono'] . "</td>";
+                    echo " <td>" . $row['usu_telefono'] . "</td>";
 
                     echo " <td> <a id= 'links' href='../../admin/controladores/usuario/eliminar.php?codigo=" . $row['usu_codigo'] . "'>Eliminar</a> </td>";
                     echo " <td> <a id= 'links' href='../../admin/controladores/usuario/modificar.php?codigo=" . $row['usu_codigo'] . "'>Modificar</a> </td>";

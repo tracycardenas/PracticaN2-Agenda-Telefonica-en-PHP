@@ -41,7 +41,7 @@
         else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn) . "<br>";
         }
-        echo "<a href='../../vista/usuario/index.php'>Regresar</a>";
+        echo "<a href='../../vista/usuario/Perfil.php?cedula=$cedula'>Regresar</a>";
         $conn->close();
     ?>
 </body>

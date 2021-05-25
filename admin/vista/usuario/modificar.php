@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Modificar datos de persona</title>
-    <link href="../../../Css/Perfil.css" rel="stylesheet" type="text/css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Modificar datos de persona</title>
+        <link href="../../../Css/Perfil.css" rel="stylesheet" type="text/css">
+    </head>
 
 <body>
     <?php
@@ -37,9 +37,6 @@
                     <br>
                     <label for="direccion">Dirección (*)</label>
                     <input type="text" id="direccion" name="direccion" value="<?php echo $row["usu_direccion"]; ?>" required placeholder="Ingrese la dirección ..."/>
-                    <br>
-                    <label for="telefono">Teléfono (*)</label>
-                    <input type="text" id="telefono" name="telefono" value="<?php echo $row["usu_telefono"]; ?>" required placeholder="Ingrese el teléfono ..."/>
                     <br>
                     <label for="fecha">Fecha Nacimiento (*)</label>
                     <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo $row["usu_fecha_nacimiento"]; ?>" required placeholder="Ingrese la fecha de nacimiento ..."/>
