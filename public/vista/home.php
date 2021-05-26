@@ -151,7 +151,7 @@
 
                         if($rol == 1){
                             echo " <td> <a id= 'links' href='../../admin/controladores/usuario/eliminar.php?codigo=" . $row['usu_codigo'] . "'>Eliminar</a> </td>";
-                            echo " <td> <a id= 'links' href='../../admin/controladores/usuario/modificar.php?codigo=" . $row['usu_codigo'] . "'>Modificar</a> </td>";
+                            echo " <td> <a id= 'links' href='../../admin/vista/usuario/MOD.php?codigo=" . $row['usu_codigo'] . "'>Modificar</a> </td>";
                             echo " <td> <a id= 'links' href='../../admin/controladores/usuario/cambiar_contrasena.php?codigo=" . $row['usu_codigo'] . "'>Cambiar contraseña</a> </td>";
                             echo "</tr>";
 

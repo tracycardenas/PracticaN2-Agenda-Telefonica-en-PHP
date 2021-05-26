@@ -16,7 +16,8 @@
     <?php
     //incluir conexión a la base de datos
     include '../../../config/conexionBD.php';
-    $codigo = $_POST["codigo"];
+    $codigo=$_GET['codigo'];
+
     $contrasena1 = isset($_POST["contrasena1"]) ? trim($_POST["contrasena1"]) : null;
     $contrasena2 = isset($_POST["contrasena2"]) ? trim($_POST["contrasena2"]) : null;
     $sqlContrasena1 = "SELECT * FROM usuario where usu_codigo=$codigo and
