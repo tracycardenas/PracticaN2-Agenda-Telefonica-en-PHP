@@ -1,3 +1,4 @@
+<link href="../../Css/buscar.css" rel="stylesheet" type="text/css">
 
             <?php
         //incluir conexión a la base de datos
@@ -7,8 +8,7 @@
         $cedula = $_GET['cedula'];
         //echo "Hola " . $cedula;
 
-        echo $cedula;
-        echo '----------------------------------';
+       
 
         $sql = "SELECT  u.usu_nombres, u.usu_apellidos, u.usu_direccion, u.usu_correo,
         GROUP_CONCAT(DISTINCT t.tel_numero, ' / ',' Operadora: ', T.tel_operadora, ' /  Tipo: ', T.tel_tipo, '<br>', '<br>') as telefonos
@@ -20,16 +20,14 @@
 
         //cambiar la consulta para puede buscar por ocurrencias de letras
         $result = $conn->query($sql);
-        echo "<table style='width:100%'>
+        echo "<table id='table' style='width:100%'>
         <tr>
         <th>Nombres</th>
         <th>Apellidos</th>
         <th>Dirección</th>
         <th>Telefonos</th>
         <th>Correo</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        
         </tr>";
         if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {

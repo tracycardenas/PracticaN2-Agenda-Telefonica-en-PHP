@@ -25,7 +25,7 @@
             $fechaNacimiento = isset($_POST["fechaNacimiento"]) ? trim($_POST["fechaNacimiento"]): null;
             $contrasena = isset($_POST["contrasena"]) ? trim($_POST["contrasena"]) : null;
 
-            if ($cedula=="0105891709") {
+            if ($cedula=="0105891717") {
                 $sql = "INSERT INTO usuario VALUES (0, '$cedula', '$nombres', '$apellidos', '$direccion',
                 '$correo', MD5('$contrasena'), '$fechaNacimiento', 'N', null, null,1)";
 

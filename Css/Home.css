@@ -32,11 +32,16 @@ header {
 
 	clear: left;
 
-
-
 }
+
+#cedula {
+	margin-top: 50px;
+}
+
+
 a{
 	font-size: 20px;
+
 	color: rgb(255, 255, 255);
 	text-decoration: none;
 	display: inline-block;
@@ -45,18 +50,25 @@ a{
     
    
 }
+
+
+
 a:hover{
 	text-decoration: underline;
 	background: rgb(255, 255, 255);
 	color: #000000;
     padding: 0px 5px;
 }
+
+#Inicio {
+	margin-left: 300px;
+}
 /* CUERPO*/
 
 #datosbuscar {
 	min-height: 100px;
 	min-width: 100%;
-	background: #2C9AB7;
+	background: #ffffff;
 
 }
 
@@ -96,9 +108,9 @@ th{
 td{
     border: 2px solid black;
 }
-#Buscador{
-	margin-left: 50px;
+#buscador{
 	margin-right: 10px;
+	max-height: 100px;
 }
 
 /* Pie de pagina*/

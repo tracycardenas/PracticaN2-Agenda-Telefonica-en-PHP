@@ -24,7 +24,6 @@
     $cedula=$_GET['cedula'];
     $sql1 = "SELECT * FROM usuario where usu_cedula=$cedula";
 
-    echo $sql1;
 
     ?>
 
@@ -33,9 +32,15 @@
     <nav id="menu1">
 
 
+
         <ul><li type="none">
 
-       
+        
+            <form id="buscador" onsubmit="return buscarPorCedula()" >
+                <input type="text" id="cedula" style="width=110px" name="cedula" value="">
+                <input type="button" id="buscar" name="buscar" value="Buscar" onclick="buscarPorCedula()">
+            </form>
+
 
        
         <a id="Inicio" href="./login.html"> Iniciar Sesion</a>
@@ -56,21 +61,14 @@
         </li>     
     </ul>           
     </nav>
+
+    <br>
+        <div id="informacion"><b></b></div>
+    <br>
     
 
 
-    <Section id="datosbuscar">
-    <form onsubmit="return buscarPorCedula()" >
-        <input type="text" id="cedula" name="cedula" value="">
-        <input type="button" id="buscar" name="buscar" value="Buscar" onclick="buscarPorCedula()">
-    </form>
-
-        <br>
-            <div id="informacion"><b>Datos de la persona</b></div>
-        <br>
-        
-
-    </Section>
+   
 
   
     
@@ -87,6 +85,19 @@
                 
                 <th>Correo</th>
                 <th>Fecha Nacimiento</th>
+               <?php 
+               $sql2 = "SELECT rol_rol_id FROM usuario WHERE usu_cedula = $cedula";
+               $result2 = $conn->query($sql2);
+               $row = $result2->fetch_assoc();
+                $rol = $row['rol_rol_id'];
+
+
+               if($rol == 1){
+                echo " <th colspan='7'> Administrar </th>";
+
+
+                }
+                ?>
             </tr>
 
         
@@ -98,15 +109,30 @@
         
 
             $sql = "SELECT u.usu_codigo, u.usu_cedula, u.usu_nombres, u.usu_apellidos, u.usu_direccion, u.usu_correo, u.usu_fecha_nacimiento ,
-                    GROUP_CONCAT(DISTINCT t.tel_numero, ' / ',' Operadora: ', T.tel_operadora, ' /  Tipo: ', T.tel_tipo, '<br>', '<br>') as telefonos
+                    GROUP_CONCAT(DISTINCT t.tel_numero, ' / ',' Operadora: ', T.tel_operadora, ' /  Tipo: ', T.tel_tipo, '<br>', '<br>') as telefonos , rol_rol_id
                    FROM usuario u , telefono t 
                    WHERE u.usu_codigo = t.usuario_usu_codigo 
                    GROUP by 1";
 
+            $sql2 = "SELECT rol_rol_id FROM usuario WHERE usu_cedula = $cedula";
+            $result2 = $conn->query($sql2);
+
+
+
+
+
             
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
+                $row = $result2->fetch_assoc();
+                $rol = $row['rol_rol_id'];
+
                 while($row = $result->fetch_assoc()) {
+                    
+
+
+                    
+
                     echo "<tr>";
                     echo " <td>" . $row["usu_cedula"] . "</td>";
                     echo " <td>" . $row['usu_nombres'] ."</td>";
@@ -114,14 +140,19 @@
                     echo " <td>" . $row['usu_direccion'] . "</td>";
 
                     echo " <td>" . $row['telefonos'] . "</td>";
-                   
 
                     echo " <td>" . $row['usu_correo'] . "</td>";
                     echo " <td>" . $row['usu_fecha_nacimiento'] . "</td>";
-                    echo " <td> <a id= 'links' href='../../admin/controladores/usuario/eliminar.php?codigo=" . $row['usu_codigo'] . "'>Eliminar</a> </td>";
-                    echo " <td> <a id= 'links' href='../../admin/controladores/usuario/modificar.php?codigo=" . $row['usu_codigo'] . "'>Modificar</a> </td>";
-                    echo " <td> <a id= 'links' href='../../admin/controladores/usuario/cambiar_contrasena.php?codigo=" . $row['usu_codigo'] . "'>Cambiar contraseña</a> </td>";
-                    echo "</tr>";
+
+                    if($rol == 1){
+                        echo " <td> <a id= 'links' href='../../admin/controladores/usuario/eliminar.php?codigo=" . $row['usu_codigo'] . "'>Eliminar</a> </td>";
+                        echo " <td> <a id= 'links' href='../../admin/controladores/usuario/modificar.php?codigo=" . $row['usu_codigo'] . "'>Modificar</a> </td>";
+                        echo " <td> <a id= 'links' href='../../admin/controladores/usuario/cambiar_contrasena.php?codigo=" . $row['usu_codigo'] . "'>Cambiar contraseña</a> </td>";
+                        echo "</tr>";
+
+                    }
+
+                    
                 }
                 
             } 
