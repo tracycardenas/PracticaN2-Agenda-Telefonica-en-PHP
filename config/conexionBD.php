@@ -1,6 +1,6 @@
 <?php
 
-    $db_servername="localhost:3310";
+    $db_servername="localhost:3308";
     $db_username="root";
     $db_password="";
     $db_name = "agenda_telefonica";

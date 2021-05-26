@@ -6,6 +6,7 @@
         <TITLE>Agenda </TITLE>
         
         <link href="../../../Css/Modificar.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
     </HEAD>
 <body>
     
@@ -21,6 +22,7 @@
         <input type ="submit" id="buscar" name="buscar" value="BUSCAR">
         <a id="Inicio" href="./login.html"> Iniciar Sesion</a>
         <a href="./crear_usuario.html"> Registrarse</a>
+        <a href="../../../public/vista/home.php"> Home</a>
         <?php 
     
             $codigo = $_GET["codigo"];
@@ -78,6 +80,23 @@
                     <input type="email"  style="width: 305px;" id="correo" name="correo" value="<?php echo $row["usu_correo"]; ?>" required placeholder="Ingrese el correo electrónico ..."/>
                     <br><br><br>
 
+                    <script>
+			
+                    $(function(){
+                            // Clona la fila oculta que tiene los campos base, y la agrega al final de la tabla
+                            $("#adicional").on('click', function(){
+                                $("#tabla tbody tr:eq(0)").clone().removeClass('fila-fija').appendTo("#tabla");
+                                
+                            });
+                        
+                            // Evento que selecciona la fila y la elimina 
+                            $(document).on("click",".eliminar",function(){
+                                var parent = $(this).parents().get(0);
+                                $(parent).remove();
+                            });
+                        });
+                    </script>
+
                     <h3>TELEFONOS</h3>
         <table id="table" style="width:100%">
             <tr>
@@ -85,7 +104,7 @@
                 <th>Numero</th>
                 <th>Tipo</th>
                 <th>Operadora</th>
-                <th >Administrar</th>
+                <th colspan="7" >Administrar</th>
 
 
             </tr>
@@ -103,9 +122,10 @@
                     <td>  <input type="text" style="width: 285px;" id="direccion" name="direccion" value="<?php echo $row['tel_operadora'] ; ?>" required placeholder="Ingrese la dirección ..."/> </td>
                     <td>  <input type="text" style="width: 285px;" id="direccion" name="direccion" value="<?php echo $row['tel_tipo'] ; ?>" required placeholder="Ingrese la dirección ..."/> </td>
 
-                <?php    
+                <?php
 
-                    echo " <td> <a id= 'links' href='../../controladores/usuario/eliminar.php?codigo=" . $row['tel_id'] . "'>Eliminar</a> </td>";
+                    echo " <td ><button id='adicional' style='margin-top: 15px;' name='adicional' type='button' class='btn btn-warning'>Agregar</button></td>";
+                    echo " <td> <a id= 'links' href='../../controladores/usuario/eliminar_telefono.php?codigo=" . $row['tel_id'] . "'>Eliminar</a> </td>";
                     echo "</tr>";
                 }
             } 

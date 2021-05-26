@@ -12,7 +12,7 @@
         </style>
     </head>
     <body>
-        <img class="avatar" src="./Image/inicio.jpeg" id="Logo" alt="Logo de Faz">
+        <img class="avatar" src="../../Image/inicio.jpeg" id="Logo" alt="Logo de Faz">
         <form id="formulario01" method="POST" action="../controladores/crear_usuario.php" onsubmit="return validarCamposObligatorios()">
             <br>
             <h3>INGRESE SU INFORMACION</h3>
@@ -47,6 +47,7 @@
                     // Clona la fila oculta que tiene los campos base, y la agrega al final de la tabla
                     $("#adicional").on('click', function(){
                         $("#tabla tbody tr:eq(0)").clone().removeClass('fila-fija').appendTo("#tabla");
+                        
                     });
                  
                     // Evento que selecciona la fila y la elimina 
@@ -60,18 +61,18 @@
 
             
                 
-            
+           <label for="direccion">Telefonos :</label>
 
             <section>
                 <table class = "table bg-info" id="tabla">
                     <tr class="fila-fija">
-                        <td><input type="text" style="width: 291px;" id="telefono" name="telefono[]" value="" placeholder="Ingrese su número telefónico..." onkeyup="return validarNumeros( this)"/></td>
+                        <td><input type="text" style="width: 130px; margin-left: 50px;" id="telefono" name="telefono[]" value="" placeholder="Número " onkeyup="return validarNumeros( this)"/></td>
                         
                         <span id="mensajeTelefono" class="error"></span>
-                        <td><input type="text" style="width: 291px;" id="operadora" name="operadora[]" value="" placeholder="Ingrese la operadora de su telefono..." /></td>
-                        <td><input type="text" style="width: 291px;" id="tipo" name="tipo[]" value="" placeholder="Ingrese su tipo de telefono..." /></td>
-                        <td class="eliminar"><input type="button"   value="Menos -"/></td>
-                        <button id="adicional" name="adicional" type="button" class="btn btn-warning">Mas +</button>
+                        <td><input type="text" style="width: 100px; " id="operadora" name="operadora[]" value="" placeholder="Operadora" /></td>
+                        <td><input type="text" style="width: 100px;" id="tipo" name="tipo[]" value="" placeholder="tipo de telefono" /></td>
+                        <td class="eliminar"><input type="button"   value="-"/></td>
+                        <td ><button id="adicional" style="margin-top: 15px;" name="adicional" type="button" class="btn btn-warning">+</button></td>
                         
                     </tr>
 

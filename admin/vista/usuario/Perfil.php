@@ -8,6 +8,12 @@
         <link href="../../../Css/Perfil.css" rel="stylesheet" type="text/css">
     </HEAD>
 <body>
+    <?php
+        session_start();
+        if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
+        header("Location: ../../../public/vista/login.html");
+        }
+    ?>
     
     <header id="header">
         <h1><b>FAST MOBILE</b></h1>
@@ -20,8 +26,18 @@
         <input type="text" style="width: 320px;" id="Buscador" name="Buscador" value="" placeholder="Ingrese el número de Telefono o Correo"/>
         <input type ="submit" id="buscar" name="buscar" value="BUSCAR">
         <a id="Inicio" href="../../../public/vista/login.html"> Iniciar Sesion</a>
+        <?php 
+                $cedula=$_GET['cedula'];
+                include '../../../config/conexionBD.php';
+                $sql = "SELECT usu_nombres FROM usuario WHERE usu_cedula=$cedula";
+                $result = $conn->query($sql);
+                $row = $result->fetch_assoc();
+                $nombres =$row["usu_nombres"];
+
+        ?>
         <a href="../../../public/vista/crear_usuario.html"> Registrarse</a>
-        <a href="./Perfil.php">Mi perfil</a>
+        <?php  $cedula=$_GET['cedula']; echo "<a href='../../../public/vista/home.php?cedula=$cedula'>Home</a>";?>
+        <label id="nombres"><?php  echo $row["usu_nombres"]; ?></label>
         <a href="../../../config/cerrar_sesion.php">Cerrar Sesion</a>
         </li>     
     </ul>           

@@ -11,7 +11,7 @@ include '../../config/conexionBD.php';
  $sql = "SELECT  u.usu_nombres, u.usu_apellidos, u.usu_direccion, u.usu_correo,
  GROUP_CONCAT(DISTINCT t.tel_numero, ' / ',' Operadora: ', T.tel_operadora, ' /  Tipo: ', T.tel_tipo, '<br>', '<br>') as telefonos
 FROM usuario u , telefono t 
-WHERE u.usu_codigo = t.usuario_usu_codigo and usu_eliminado = 'N' and usu_cedula='$cedula'
+WHERE u.usu_codigo = t.usuario_usu_codigo and usu_eliminado = 'N' and (usu_cedula='$cedula' or usu_correo='$cedula')
 GROUP by 1;";
 echo $sql;
  
