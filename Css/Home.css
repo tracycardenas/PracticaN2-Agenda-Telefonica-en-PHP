@@ -35,7 +35,7 @@ header {
 }
 
 #cedula {
-	margin-top: 5px;
+	margin-top: 25px;
 }
 
 
@@ -110,7 +110,7 @@ td{
 }
 #buscador{
 	margin-right: 10px;
-	max-height: 5px;
+	max-height: 5 px;
 	margin-left: 10px;
 }
 
@@ -125,3 +125,10 @@ footer{
 	padding: 50px;
 	font-size: 18px;
 }
+#Tracy{
+	max-width: 500px;
+	float: left;
+	margin-left: 200px;
+}
+
+

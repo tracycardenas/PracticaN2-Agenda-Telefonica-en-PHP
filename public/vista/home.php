@@ -66,7 +66,7 @@
 
         <label id="nombres"><?php  if($GLOBALS <> 'anonimo'){echo $row["usu_nombres"];} ?></label>
 
-        <?php  if($GLOBALS <> 'anonimo'){echo "<a href='../../../config/cerrar_sesion.php'>Cerrar Sesion</a>";} ?>
+        <?php  if($GLOBALS <> 'anonimo'){echo "<a href='../../config/cerrar_sesion.php'>Cerrar Sesion</a>";} ?>
 
 
         </li>     
@@ -115,7 +115,7 @@
             
         
 
-            $sql = "SELECT u.usu_codigo, u.usu_cedula, u.usu_nombres, u.usu_apellidos, u.usu_direccion, u.usu_correo, u.usu_fecha_nacimiento ,
+            $sql = "SELECT u.usu_codigo, u.usu_cedula, u.usu_nombres, u.usu_apellidos, u.usu_direccion, u.usu_correo, u.usu_fecha_nacimiento , tel_numero,
                     GROUP_CONCAT(DISTINCT t.tel_numero, ' / ',' Operadora: ', T.tel_operadora, ' /  Tipo: ', T.tel_tipo, '<br>', '<br>') as telefonos , rol_rol_id
                    FROM usuario u , telefono t 
                    WHERE u.usu_codigo = t.usuario_usu_codigo 
@@ -131,6 +131,10 @@
                     $rol = $row['rol_rol_id'];
 
                     while($row = $result->fetch_assoc()) {
+                        $correo = $row['usu_correo'];
+                        $telefono = $row['tel_numero'];
+                        $telefonos = $row['telefonos'];
+                        
 
                         echo "<tr>";
 
@@ -138,9 +142,11 @@
                         echo " <td>" . $row['usu_apellidos'] . "</td>";
                         echo " <td>" . $row['usu_direccion'] . "</td>";
 
-                        echo " <td>" . $row['telefonos'] . "</td>";
+                        echo "<td> <a id= 'links' href='tel:'$telefono'> $telefonos  </a> </td>";
 
-                        echo " <td>" . $row['usu_correo'] . "</td>";
+
+                        echo "<td> <a id= 'links' href='mailto:'$correo'> $correo  </a> </td>";
+
                         echo " <td>" . $row['usu_fecha_nacimiento'] . "</td>";
 
                         if($rol == 1){
@@ -164,15 +170,20 @@
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
+                        $correo = $row['usu_correo'];
+                        $telefono = $row['tel_numero'];
+                        $telefonos = $row['telefonos'];
                         echo "<tr>";
 
                         echo " <td>" . $row['usu_nombres'] ."</td>";
                         echo " <td>" . $row['usu_apellidos'] . "</td>";
                         echo " <td>" . $row['usu_direccion'] . "</td>";
+                        echo "<td> <a id= 'links' href='tel:'$telefono'> $telefonos  </a> </td>";
+
     
-                        echo " <td>" . $row['telefonos'] . "</td>";
             
-                        echo " <td>" . $row['usu_correo'] . "</td>";
+                        echo "<td> <a id= 'links' href='mailto:'$correo'> $correo  </a> </td>";
+
                         echo " <td>" . $row['usu_fecha_nacimiento'] . "</td>";
                         echo "</tr>";
                     }
@@ -197,14 +208,27 @@
 
     </Section>
     <footer>
-        -----------------------------------------------------------------------<br>
-        Derechos reservados &copy; 2021 <br>
-        Diseñado por: David Paguay <br>
-        Email:  <a href="mailto: dapaguay54@outlook.com"> dapaguay54@outlook.com</a> <br>
-        Facebook:<a href=" https://www.facebook.com/luisdavid.paguaypalaguachi/">  David Paguay</a><br> <br>
-        PRACTICA 1 --PROGRAMACION HIPERMEDIAL--
-    
-    </footer>
+
+   <fieldset>
+      <legend>Autores</legend>
+        <section id ="Tracy">
+            <p><strong>Integrante 1: </strong> Tracy Rocío Cárdenas Arichábala</p>
+            <p><strong>Email:</strong> <a href="mailto:tcardenasa@est.ups.edu.ec "> tcardenasa@est.ups.edu.ec </a></p>
+            <p><strong>Celular: </strong><a href="tel:+593990130270">(593) 99 013 0270</a></p>
+        </section>
+
+        <section id= "David">
+            <p><strong>Integrante 2:</strong> Luis David Paguay Palaguachi</p>
+            <p><strong>Email:</strong> <a href="mailto:lpaguay1@est.ups.edu.ec "> lpaguay1@est.ups.edu.ec </a></p>
+            <p><strong>Celular: </strong><a href="tel:+593990547801">(593) 98 023 1120</a></p>
+
+        </section>
+
+   </fieldset> 
+
+   <p><strong>Todos los derechos reservados &copy;</strong></p>
+
+ </footer>
    
 </body>
 
