@@ -23,7 +23,7 @@
     <header id="header">
         <h1><b>FAST MOBILE</b></h1>
 
-        <H2><b>NO GAME NO LIFE</b></H2>
+        <H2><b>AGENDA TELEFÓNICA</b></H2>
     </header>
 
     <?php 
@@ -118,7 +118,7 @@
             $sql = "SELECT u.usu_codigo, u.usu_cedula, u.usu_nombres, u.usu_apellidos, u.usu_direccion, u.usu_correo, u.usu_fecha_nacimiento , tel_numero,
                     GROUP_CONCAT(DISTINCT t.tel_numero, ' / ',' Operadora: ', T.tel_operadora, ' /  Tipo: ', T.tel_tipo, '<br>', '<br>') as telefonos , rol_rol_id
                    FROM usuario u , telefono t 
-                   WHERE u.usu_codigo = t.usuario_usu_codigo 
+                   WHERE u.usu_codigo = t.usuario_usu_codigo and rol_rol_id>1 and usu_eliminado='N'
                    GROUP by 1";
             if($GLOBALS <> 'anonimo'){
 
@@ -131,6 +131,7 @@
                     $rol = $row['rol_rol_id'];
 
                     while($row = $result->fetch_assoc()) {
+
                         $correo = $row['usu_correo'];
                         $telefono = $row['tel_numero'];
                         $telefonos = $row['telefonos'];
@@ -152,7 +153,7 @@
                         if($rol == 1){
                             echo " <td> <a id= 'links' href='../../admin/controladores/usuario/eliminar.php?codigo=" . $row['usu_codigo'] . "'>Eliminar</a> </td>";
                             echo " <td> <a id= 'links' href='../../admin/vista/usuario/MOD.php?codigo=" . $row['usu_codigo'] . "'>Modificar</a> </td>";
-                            echo " <td> <a id= 'links' href='../../admin/controladores/usuario/cambiar_contrasena.php?codigo=" . $row['usu_codigo'] . "'>Cambiar contraseña</a> </td>";
+                            echo " <td> <a id= 'links' href='../../admin/vista/usuario/cambiar_contrasena.php?codigo=" . $row['usu_codigo'] . "'>Cambiar contraseña</a> </td>";
                             echo "</tr>";
 
                         }

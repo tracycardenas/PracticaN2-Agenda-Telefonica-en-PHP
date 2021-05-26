@@ -19,12 +19,12 @@
     $codigo=$_GET['codigo'];
 
     //Si voy a eliminar físicamente el registro de la tabla
-    $sql = "DELETE FROM usuario WHERE usu_codigo = $codigo";
+    //$sql = "DELETE FROM usuario WHERE usu_codigo = $codigo";
     $sql3 = "DELETE FROM telefono WHERE usuario_usu_codigo = $codigo";
     date_default_timezone_set("America/Guayaquil");
     $fecha = date('Y-m-d H:i:s', time());
-    //$sql = "UPDATE usuario SET usu_eliminado = 'S', usu_fecha_modificacion = '$fecha' WHERE
-    //usu_codigo = $codigo";
+    $sql = "UPDATE usuario SET usu_eliminado = 'S', usu_fecha_modificacion = '$fecha' WHERE
+    usu_codigo = $codigo";
 
     $sql2 = "SELECT usu_cedula FROM usuario  WHERE rol_rol_id = 1 ";
     $result = $conn->query($sql2);

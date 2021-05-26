@@ -11,9 +11,9 @@
        
 
         $sql = "SELECT  u.usu_nombres, u.usu_apellidos, u.usu_direccion, u.usu_correo,
-        GROUP_CONCAT(DISTINCT t.tel_numero, ' / ',' Operadora: ', T.tel_operadora, ' /  Tipo: ', T.tel_tipo, '<br>', '<br>') as telefonos
+        GROUP_CONCAT(DISTINCT t.tel_numero, ' / ',' Operadora: ', T.tel_operadora, ' /  Tipo: ', T.tel_tipo, '<br>', '<br>') as telefonos, t.tel_numero
         FROM usuario u , telefono t 
-        WHERE u.usu_codigo = t.usuario_usu_codigo and usu_eliminado = 'N' and usu_cedula='$cedula'
+        WHERE u.usu_codigo = t.usuario_usu_codigo and usu_eliminado = 'N' and (usu_cedula='$cedula' or usu_correo='$cedula')
         GROUP by 1;";
         
         
@@ -31,13 +31,16 @@
         </tr>";
         if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
+            $correo = $row['usu_correo'];
+            $telefono = $row['tel_numero'];
+            $telefonos = $row['telefonos'];
 
         echo "<tr>";
         echo " <td>" . $row['usu_nombres'] ."</td>";
         echo " <td>" . $row['usu_apellidos'] . "</td>";
         echo " <td>" . $row['usu_direccion'] . "</td>";
-        echo " <td>" . $row['telefonos'] . "</td>";
-        echo " <td>" . $row['usu_correo'] . "</td>";
+        echo "<td> <a id= 'links' href='tel:'$telefono'> $telefonos  </a> </td>";
+        echo "<td> <a id= 'links' href='mailto:'$correo'> $correo  </a> </td>";
         echo "</tr>";
         }
         } else {

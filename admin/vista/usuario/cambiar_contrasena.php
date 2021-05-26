@@ -14,7 +14,8 @@
     ?>
 
     <?php
-        $codigo = $_GET["codigo"];
+     $codigo=$_GET['codigo'];
+
     ?>
     
     <form id="formulario01" method="POST" action="../../controladores/usuario/cambiar_contrasena.php">
